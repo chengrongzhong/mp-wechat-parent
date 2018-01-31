@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport"/>
+    <title th:text="${share_title}">share_title</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <style type="text/css">
+        .msg,.baoming .btn_bao a,.baoming .btn_bao input{background-color:#EBA443;}
+    </style>
+</head>
+
+<body>
+<input type="hidden" id="share_title" value="share_title" th:value="${share_title}"/>
+<input type="hidden" id="share_content" value="share_content" th:value="${share_content}"/>
+<input type="hidden" id="share_pic" value="share_pic" th:value="${share_pic}"/>
+<input type="hidden" id="share_url" value="share_url" th:value="${share_url}" />
+
+<section class="g-wrap f-cb">
+    <div class="mpage">
+        <p class="bkimg" style="height:65%; width:100%; display:block;"></p>
+        <div class="contact">
+            <h2 th:text="${customerName}">customerName <span th:text="${customerPosition}">customerPosition</span></h2>
+            <p class="company" th:text="${companyName}">companyName</p>
+            <ul th:each="comtel : ${companyTelList}">
+                <li th:if="${comtel.telType=='1'}"><i class="fa fa-mobile fa-fw"></i><a th:href="'tel:'+${comtel.telNum}" th:text="${comtel.telNum}"></a></li>
+                <li th:if="${comtel.telType=='2'}"><i class="fa fa-phone fa-fw"></i><a th:href="'tel:'+${comtel.telNum}" th:text="${comtel.telNum}"></a></li>
+                <li th:if="${comtel.telType=='3'}"><i class="fa fa-fax fa-fw"></i><a th:href="'tel:'+${comtel.telNum}" th:text="${comtel.telNum}"></a></li>
+
+                <li th:if="${comtel.telType=='4'}" th:text="${comtel.telNum}"><i class="fa fa-weixin fa-fw"></i></li>
+                <!--<li th:if="${comtel.telType=='5'}"><i class="fa fa-qq fa-fw"></i><a target="_blank" th:href="@{'http://wpa.qq.com/msgrd?v=3&uin='+${comtel.telNum}+'&site=qq&menu=yes'}" th:text="${comtel.telNum}"></a></li>-->
+
+                <li th:if="${comtel.telType=='6'}" class="address" th:text="${comtel.telNum}"><img src="/Public/Wap/vcard/vtemp_1/images/address.png"/></li>
+            </ul>
+        </div>
+        <div class="introcon" style="overflow:hidden">
+            <div class="conblock">
+                <h3>业务范围</h3>
+                <p class="subtit"></p>
+                <div class="contxt" th:text="${companyJobDesc}">conpanyJobDesc</div>
+                <div class="conimg" th:each="comJP : ${companyJobPicList}">
+                    <img th:src="${comJP.img}"/>
+                </div>
+            </div>
+
+            <div class="conblock" th:each="addr : ${companyAddrList}">
+                <h3 th:text="${addr.name}">重庆地址</h3>
+                <p class="subtit" th:text="${addr.value}">九龙坡区金凤镇新州大道金凤万千物流市场A3栋22-23号</p>
+                <div class="contxt" th:text="'电话:'+${addr.tel}+'      '+${addr.contectName}+'  '+${addr.contectTel}">电话:023-68125107      高先生 18580306065</div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="ctel"><a th:href="'tel:'+${companyTel}"><img src="/Public/Wap/vcard/vtemp_1/images/ctel.png"/></a></div>
+</section>
+
+
+<!-- weixinshare start -->
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script>
+    wx.config({
+        appId: 'wx8cb9286e6c2d64a5',
+        timestamp: '1502956839',
+        nonceStr: 'eeLKsdZ9spUrdPBF',
+        signature: 'd855b4772e5ac92e933496197c4fa896ccd2e5bd',
+        jsApiList: [
+            'checkJsApi',
+            'onMenuShareTimeline',
+            'onMenuShareAppMessage',
+            'onMenuShareQQ',
+            'onMenuShareWeibo'
+        ]
+    });
+    wx.ready(function () {
+        // 1 判断当前版本是否支持指定 JS 接口，支持批量判断
+        wx.checkJsApi({
+            jsApiList: [
+                'getNetworkType',
+                'previewImage',
+                'onMenuShareTimeline',
+                'onMenuShareAppMessage',
+                'onMenuShareQQ',
+                'onMenuShareWeibo'
+            ],
+        });
+        var httpUrl = $('#share_url').val();
+        var shareData = {
+            title: $('#share_title').val(),
+            desc: $('#share_content').val(),
+            link: '',
+            imgUrl: $('#share_pic').val()
+        };
+        wx.onMenuShareAppMessage(shareData);
+        wx.onMenuShareTimeline(shareData);
+        wx.onMenuShareQQ(shareData);
+        wx.onMenuShareWeibo(shareData);
+    });
+</script>
+<!-- weixinshare end -->
+
+<!-- baidu map api start -->
+<!--<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=tf8LcjCjdtkAMPfq0t9c4dlE"></script>-->
+<!-- baidu map api end -->
+<script type="text/javascript" src="/Public/js/map.js"></script>
+</body>
+</html>

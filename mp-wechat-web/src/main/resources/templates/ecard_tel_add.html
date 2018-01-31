@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport"/>
+    <title>新建电子名片</title>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <script src="/js/plugins/jquery/jquery-3.2.1.min.js"></script>
+</head>
+
+<body>
+<form id="mainForm" th:action="@{/company/ecard_tel_create}" method="post"> <!-- class='form-horizontal form-validate form-bordered' -->
+    <input type="hidden" id="companyId" name="companyId" th:text="${companyId}" th:value="${companyId}"/>
+    <input type="hidden" id="companyTels" name="companyTels"/>
+    <input type="button" th:onclick="'addTels();'" value='新增联系电话'/>
+    <table>
+        <thead>
+            <tr>
+                <th>类型</th>
+                <th>电话号码</th>
+            </tr>
+        </thead>
+        <tbody  id="tels">
+        </tbody>
+    </table>
+    <input type="submit" th:onclick="'submit();'" value="提交"/>
+</form>
+
+<script type="text/javascript" th:inline="javascript">
+    /*<![CDATA[*/
+//    $(document).ready(function () {
+        function addTels() {
+            var addStart =
+                    "<tr>" +
+                    "<td>" +
+                    "<select>";
+            var addEnd=
+                    "</select>"+
+                    "</td>" +
+                    "<td>" +
+                    "<p>电话号码：<input id='telNum' name='telNum' type='text'/></p>" +
+                    "</td>" +
+                    "</tr>";
+            var addBody="";
+            var temp=0;
+            var telMap=
+                    [
+                        {id:1, desc:"公司电话"},
+                        {id:2, desc:"家庭电话"},
+                        {id:3, desc:"移动电话"},
+                        {id:4, desc:"传真号码"},
+                        {id:5, desc:"微信号"},
+                        {id:6, desc:"QQ号"},
+                    ]
+            telMap.forEach(
+                    function addBoeyHtml(tclEnum) {
+                        var id = tclEnum.id;
+                        var desc = tclEnum.desc;
+                        var option = "<option id='telType' name='telType' value='" + id + "'>" + desc + "</option>";
+                        addBody += option;
+                        temp++;
+                    }
+            );
+            var addHtml = addStart + addBody + addEnd;
+            $("#tels").append(addHtml);
+        }
+
+        function submit() {
+            var jsonArrData = new Array();
+            $("#tels").each(function () {
+                var obj = {};
+                obj.telType = $(this).find("#telType").val();
+                obj.telNum = $(this).find("#telNum").val();
+                jsonArrData.push(obj);
+            });
+            $("#companyId").val($("#companyId").val());
+            $("#companyTels").val(JSON.stringify(jsonArrData));
+            $("#mainForm").submit();
+        }
+//    })
+    /*]]>*/
+</script>
+</body>
+</html>

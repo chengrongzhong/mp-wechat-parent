@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <meta content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport"/>
+    <title>新建电子名片</title>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <script src="/js/plugins/jquery/jquery-3.2.1.min.js"></script>
+</head>
+
+<body>
+<form id="mainForm" th:action="@{/company/ecard_create}" th:object="${company}" method="post"> <!-- class='form-horizontal form-validate form-bordered' -->
+    <p>公司名：<input id="company_name" name="company_name" type="text" value="" th:field="*{companyName}"/></p>
+    <p>客户名：<input id="customer_name" name="customer_name" type="text" value="" th:field="*{customerName}"/></p>
+    <p>公司电话：<input id="company_tel" name="company_tel" type="text" value="" th:field="*{companyTel}"/></p>
+    <p>公司业务描述：<input id="companyJobDesc" name="companyJobDesc" type="text" value="" th:field="*{companyJobDesc}"/></p>
+    <p>公司地址：<input id="companyPosition" name="companyPosition" type="text" value="" th:field="*{companyPosition}"/></p>
+    <input type="submit" value="提交"/>
+</form>
+
+<script>
+    $(document).ready(function () {
+        // $("#submit_btn").click(function () {
+        //     var company_name = $("#company_name").val();
+        //     var customer_name = $("#customer_name").val();
+        //     var company_tel = $("#company_tel").val();
+        //     var companyJobDesc = $("#companyJobDesc").val();
+        //     var customerPosition = $("#customerPosition").val();
+        //     $("#mainForm").submit();
+        // });
+    })
+</script>
+</body>
+</html>

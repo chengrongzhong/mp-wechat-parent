@@ -1,0 +1,109 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<title>Our Love Story</title>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+	<style type="text/css">
+		@font-face {
+			font-family: digit;
+			src: url('http://hackerzhou.me/ex_love/digital-7_mono.ttf') format("truetype");
+		}
+	</style>
+	<link  type="text/css" href="/css/default.css" rel="stylesheet"/>
+	<script type="text/javascript" src="/js/jquery.js"></script>
+	<script type="text/javascript" src="/js/garden.js"></script>
+	<script type="text/javascript" src="/js/functions.js"></script>
+</head>
+
+<body>
+<div id="mainDiv">
+	<div id="content">
+		<div id="code">
+			<span class="comments">/**</span><br />
+			<span class="space"/><span class="comments">* We fell in love on July 24, 2015.</span><br />
+			<span class="space"/><span class="comments">* After that I'm getting ready to marry you every day.</span><br />
+			<span class="space"/><span class="comments">* Finally I succeeded, and we had our baby.</span><br />
+			<span class="space"/><span class="comments">*/</span><br />
+			<span class="comments">// One day in 1989, a boy and a girl was born </span><br />
+			Boy i = <span class="keyword">new</span> Boy(<span class="string">"Spoke"</span>);<br />
+			Girl u = <span class="keyword">new</span> Girl(<span class="string">"ViVi"</span>);<br />
+			<span class="comments">// They fell in love with each other on July 24, 2015.</span><br />
+			i.love(u);<br />
+			<span class="comments">// Now We are married and have our children.</span><br />
+			i.marry(u);<br />
+			Baby p = <span class="keyword">new</span> Baby(<span class="string">"p"</span>);<br />
+			u.born(p);<br />
+			<span class="comments">// We lived happily ever after.</span><br />
+			i.liveHappilyWith(u, p);<br />
+
+			<span class="comments">// Although life often has problems, </span><br />
+			<span class="keyword">if</span> (problems == <span class="keyword">true</span>) {<br />
+			<span class="comments">// As long as we are together we can solve it.</span><br />
+			<span class="placeholder"/><span class="keyword">while</span> (together(i, u, p)) {<br />
+			<span class="placeholder"/><span class="placeholder"/>problems = <span class="keyword">false</span>;<br />
+			<span class="placeholder"/>}<br />
+			}<br />
+
+		</div>
+		<div id="loveHeart">
+			<canvas id="garden"></canvas>
+			<div id="words">
+				<div id="messages">
+					ViVi, I have fallen in love with you for
+					<div id="elapseClock"></div>
+				</div>
+				<div id="messages2">
+					P has born for
+					<div id="elapseClock2"></div>
+				</div>
+				<div id="loveu">
+					Love u forever and ever.<br/>
+					<div class="signature">- Spoke</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	var offsetX = $("#loveHeart").width() / 2;
+	var offsetY = $("#loveHeart").height() / 2 - 55;
+	var together = new Date();
+	together.setFullYear(2015, 6, 24);// month:0 ~ 11
+	together.setHours(21);
+	together.setMinutes(0);
+	together.setSeconds(0);
+	together.setMilliseconds(0);
+	var born = new Date();
+	born.setFullYear(2017, 5, 1);// month:0 ~ 11
+	born.setHours(12);
+	born.setMinutes(0);
+	born.setSeconds(0);
+	born.setMilliseconds(0);
+
+	if (!document.createElement('canvas').getContext) {
+		var msg = document.createElement("div");
+		msg.id = "errorMsg";
+		msg.innerHTML = "Your browser doesn't support HTML5!<br/>Recommend use Chrome 14+/IE 9+/Firefox 7+/Safari 4+";
+		document.body.appendChild(msg);
+		$("#code").css("display", "none")
+		$("#copyright").css("position", "absolute");
+		$("#copyright").css("bottom", "10px");
+		document.execCommand("stop");
+	} else {
+		setTimeout(function () {
+			startHeartAnimation();
+		}, 5000);
+
+		timeElapse(together);
+		timeElapse2(born);
+		setInterval(function () {
+			timeElapse(together);
+			timeElapse2(born);
+		}, 500);
+
+		adjustCodePosition();
+		$("#code").typewriter();
+	}
+</script>
+</body>
+</html>

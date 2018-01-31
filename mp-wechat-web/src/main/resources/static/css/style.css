@@ -1,0 +1,49 @@
+.g-wrap{ width:100%; height:100%;margin:0 auto; position:relative }
+.mpage{ width:100%; position:relative; z-index:99; left:0; top:0;}
+
+.f-cb:after,.f-cbli li:after{display:block;clear:both;visibility:hidden;height:0;overflow:hidden;content:".";}
+.f-cb,.f-cbli li{zoom:1;}
+
+.contact{ background-image: url(../images/abm.png) ; background-position:top right; background-repeat:no-repeat; background-color: rgba(0,0,0,.8);  overflow:hidden; padding:10px; position:relative;}
+.contact h2{ font-size:24px; line-height:30px; display:block; font-weight:normal; margin:10px 0;}
+.contact h2 span{ font-size:16px; margin-left:10px; font-weight:normal}
+.contact p.company{ line-height:25px; font-size:14px; color:#eba443}
+.contact ul{ margin:15px 0; overflow:hidden}
+.contact ul li{ width:100%;  font-size:14px; height:25px;white-space:nowrap; margin-bottom:3px; line-height:25px; overflow:hidden}
+.contact ul li img{ width:25px; height:25px; margin-right:5px; display:inline; float:left;}
+.contact ul li.address{ width:100%; float:none;height: auto;white-space: normal;}
+.contact ul li a{ color:#fff; text-decoration:none}
+.contact li i{ margin-right:3%; color:#eba443; width:20px; text-align:center; font-size:18px;}
+
+.fa{display:inline-block;font:normal normal normal 14px/1 FontAwesome;font-size:inherit;text-rendering:auto;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+.fa-mobile-phone:before,.fa-mobile:before{content:"\f10b"}
+.fa-fw{width:1.28571429em;text-align:center}
+
+.fa-phone:before{content:"\f095"}
+.fa-fax:before{content:"\f1ac"}
+.fa-qq:before{content:"\f1d6"}
+.fa-wechat:before,
+.fa-weixin:before{content:"\f1d7"}
+
+.contact ul li.address{ width:100%; float:none;height: auto;white-space: normal;}
+
+.introcon{text-align: left; padding:15px 0; background:rgba(0,0,0,0.8); border-top:2px solid #eba443; color:#fff; line-height:24px;}
+
+
+/*conblock*/
+.conblock{margin: 10px 0 30px;overflow: hidden;}
+.conblock h3{margin: 0.2em 0px 0px; padding: 0px 0.5em 5px; max-width: 100%; color: #eba443; font-size: 1.8em; line-height: 1;text-align: center;}
+.conblock .subtit{background-color:#eba443;margin: 5px 0; padding:5px 0; font-size: 1em; line-height: 1; color: rgb(0, 0, 0); box-sizing: border-box;text-align: center;}
+.conblock .contxt{margin-top: 1rem;line-height: 1;font-size: 1.1rem;padding: 15px;}
+.conblock .conimg{margin-top: 1rem;text-align: center;padding: 15px;}
+.conblock .conimg img{max-width: 100%;margin-bottom: 10px;}
+.conblock .convideo{margin-top: 1rem;}
+
+.ctel { position:fixed; left:10px; bottom:30px; z-index:999; height:50px; width:50px;}
+.ctel img{ width:50px; height:50px;}
+
+
+
+
+
+
