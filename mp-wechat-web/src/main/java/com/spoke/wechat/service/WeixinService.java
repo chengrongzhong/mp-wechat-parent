@@ -48,6 +48,7 @@ public class WeixinService {
     public void init() {
         TokenManager.init(appid, secret);
         TicketManager.init(appid);
+        TimerService.init();
     }
 
     public static Logger getLogger() {
