@@ -60,7 +60,7 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-tomcat</artifactId>
-			<scope>provided</scope>
+			<scope>compile</scope><!--需要放入tomcat容器的时候需要修改成provided-->
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -76,7 +76,7 @@
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
 			<version>3.1.0</version>
-			<scope>provided</scope>
+			<scope>compile</scope><!--需要放入tomcat容器的时候需要修改成provided-->
 		</dependency>
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
