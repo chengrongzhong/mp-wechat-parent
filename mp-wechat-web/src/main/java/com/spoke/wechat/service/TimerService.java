@@ -27,7 +27,7 @@ public class TimerService {
         c2.setTime(new Date());
         int nowDay = c1.get(Calendar.DAY_OF_MONTH);
         c2.set(Calendar.DATE, nowDay + 1);
-        c2.set(Calendar.HOUR_OF_DAY, 1);
+        c2.set(Calendar.HOUR_OF_DAY, 11);
         c2.set(Calendar.MINUTE, 0);
         c2.set(Calendar.SECOND, 0);
         return minuteDiff(c1.getTime(), c2.getTime());
