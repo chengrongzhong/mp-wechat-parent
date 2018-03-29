@@ -76,12 +76,13 @@ public class TimerTaskThread extends Thread {
 //        String htmls= getPageSource("https://www.jd.com/","UTF-8");
 //        String htmls= getPageSource("http://wx.nebiim.com:65181/luckdraw/a/mobile/draw/card?m=Bl7zlhRKXoQcglHJb5hHWw%3D%3D","UTF-8");
 //        String htmls= getPageSource("http://hd.nebiim.com/luckdraw/a/mobile/draw/card?m=Bl7zlhRKXoQcglHJb5hHWw%3D%3D","UTF-8", map);
-        Map<String, String> pageValue = getPageValue("http://hd.nebiim.com/luckdraw/a/mobile/draw/card?m=Bl7zlhRKXoQcglHJb5hHWw%3D%3D", "UTF-8");
+//        Map<String, String> pageValue = getPageValue("http://hd.nebiim.com/luckdraw/a/mobile/draw/card?m=Bl7zlhRKXoQcglHJb5hHWw%3D%3D", "UTF-8");
 //        System.err.println(map);
-        System.out.println(pageValue);
+//        System.out.println(pageValue);
     }
 
-    public static String getPageSource(String pageUrl,String encoding, Map<String, String> map) {
+//    http://h5.gmccopen.com/dzp/web/dzp!index.action?channelId=wechat_gzmcc_push
+    public static String getPageSource(String pageUrl,String encoding) {
         StringBuffer sb = new StringBuffer();
         try {
             //构建一URL对象
@@ -90,11 +91,15 @@ public class TimerTaskThread extends Thread {
             BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream(), encoding));
             String line;
             //读取www资源
+            String next = "";
             while ((line = in.readLine()) != null) {
                 sb.append(line);
                 sb.append("\n");
             }
             in.close();
+            System.out.println(sb.toString());
+            System.err.println(next);
+
         } catch (Exception ex) {
             System.err.println(ex);
         }
