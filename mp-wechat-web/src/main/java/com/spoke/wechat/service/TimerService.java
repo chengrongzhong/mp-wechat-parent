@@ -17,7 +17,7 @@ public class TimerService {
     public static void init() {
         long restMinuteReload = restMinuteReload();
         ScheduledThreadPoolExecutor timerThreadPool = new ScheduledThreadPoolExecutor(1, new ThreadFactoryBuilder().setNameFormat("TimerThreadPool-01").build());
-        timerThreadPool.scheduleWithFixedDelay(new TimerTaskThread(), restMinuteReload, 24 * 60, TimeUnit.MINUTES);
+        timerThreadPool.scheduleWithFixedDelay(new TimerTaskThread(), restMinuteReload, 12 * 60, TimeUnit.MINUTES);
     }
 
     public static long restMinuteReload() {
@@ -27,8 +27,8 @@ public class TimerService {
         c2.setTime(new Date());
         int nowDay = c1.get(Calendar.DAY_OF_MONTH);
         c2.set(Calendar.DATE, nowDay + 1);
-        c2.set(Calendar.HOUR_OF_DAY, 11);
-        c2.set(Calendar.MINUTE, 0);
+        c2.set(Calendar.HOUR_OF_DAY, 0);
+        c2.set(Calendar.MINUTE, 10);
         c2.set(Calendar.SECOND, 0);
         return minuteDiff(c1.getTime(), c2.getTime());
     }
